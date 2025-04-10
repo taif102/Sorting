@@ -1,0 +1,31 @@
+#include<bits/stdc++.h>
+using namespace std; 
+    
+int main(){ 
+    int n;
+    cin>>n;
+    int elem[n+2];
+    elem[0]=-3;
+    //multiset<int>t;
+    for(int i=1;i<n+1;i++)
+    {
+        int x;
+        cin>>x;
+        elem[i]=x;
+        //elem.push_back(x);
+    }
+    //sort(elem.begin(),elem.end());
+    sort(elem,elem +n+1);
+    int count=0;
+    //elem[n]=-1;
+    elem[n+1]=-2; //added to handle out of bound
+    for(int i=1;i<n+1;i++)
+    {
+        if(elem[i]!=elem[i-1]&& elem[i]!=elem[i+1]) // comparing with 2 native elements
+        {
+            count++;
+        }
+    }
+    cout<<count;
+    
+}
