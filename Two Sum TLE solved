@@ -1,0 +1,33 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int n, y;
+    cin >> n >> y;
+    
+    vector<int> number(n); // store the array
+    unordered_map<int, int> mp; // value -> index map
+
+    // Input array and store element with its index
+    for(int i = 0; i < n; i++)
+    {
+        cin >> number[i];
+        mp[number[i]] = i; // store value with its index
+    }
+
+    // Try to find a pair that sums to y
+    for(int i = 0; i < n; i++)
+    {
+        int complement = y - number[i];
+        
+        // check if complement exists and not the same index
+        if(mp.find(complement) != mp.end() && mp[complement] != i)
+        {
+            cout << i + 1 << " " << mp[complement] + 1;
+            return 0;
+        }
+    }
+
+    cout << "IMPOSSIBLE";
+}
